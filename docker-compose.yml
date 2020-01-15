@@ -6,9 +6,10 @@ services:
       dockerfile: ./docker/rails/Dockerfile
     
     #初回`docker-compose up`後、
-    #docker-compose run app rails new . --force --database=mysql --skip-bundle
-    #docker-compose run app rake db:create
-    
+    #docker-compose exec app bundle install
+    #docker-compose exec app rails new . --force --database=mysql --skip-bundle
+    #docker-compose exec app rake db:create
+
     #bundleinstall後のサーバー立ち上げ
     #command: bundle exec unicorn -p 3000 -c /app/config/unicorn.rb
 
