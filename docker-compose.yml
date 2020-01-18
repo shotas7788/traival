@@ -7,10 +7,12 @@ services:
     
     #初回`docker-compose up`後、
     #docker-compose run app rails new . --force --database=mysql --skip-bundle
+    #config/database.ymlにて、pool:5, password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>, host: dbに変更。 
+    #cp -a docker/rails/unicorn.rb config
     #docker-compose run app rake db:create
     
     #bundleinstall後のサーバー立ち上げ
-    #command: bundle exec unicorn -p 3000 -c /app/config/unicorn.rb
+    command: bundle exec unicorn -p 3000 -c /app/config/unicorn.rb
 
     ports:
       - '3000:3000'
