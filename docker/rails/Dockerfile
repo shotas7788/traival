@@ -10,7 +10,7 @@ WORKDIR /app
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 RUN gem install bundler
-RUN bundle install
+# RUN bundle install
 ADD . /app
 
-EXPOSE 3000
+EXPOSE 8080
