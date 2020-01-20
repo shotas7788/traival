@@ -4,6 +4,8 @@
     <title>Traival</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -20,10 +22,16 @@
        <% if flash[:alert] %>
          <div class="alert alert-danger"><%= flash[:alert] %></div>
        <% end %>
-       <%= yield %>
 
-       <%= render 'partial/footer' %>
-    </div>
     <%# ==========ヘッダー、フラッシュメッセージ、フッター========== %>
+    
+    <%# ==========ここにcontainerクラスを追加========== %>
+     <div class="container">
+      <%= yield %>
+     </div>
+    <%# ==========containerクラス========== %>
+    
+    <%= render 'partial/footer' %>
+    </div>
   </body>
 </html>

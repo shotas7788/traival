@@ -56,6 +56,12 @@ gem 'bullet', group: 'development'
 
 gem 'pry', '~> 0.12.2'
 
+gem 'pry-rails'
+
+gem 'pry-byebug'
+
+gem 'pry-stack_explorer'
+
 gem 'haml'
 
 gem 'bootstrap', '~> 4.4.1'
