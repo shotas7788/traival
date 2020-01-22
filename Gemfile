@@ -62,6 +62,8 @@ gem 'pry-byebug'
 
 gem 'pry-stack_explorer'
 
+gem 'pry-doc'
+
 gem 'haml'
 
 gem 'haml-rails'

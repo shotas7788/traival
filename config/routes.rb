@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   
   get '/users/:id', to: 'users#show', as: 'user'
+  
+    # ==========postsコントローラ、アクションののルーティング設定==========
+    resources :posts, only: %i(new create) do
+      resources :photos, only: %i(create)
+    end
+    # ==========postsコントローラ、アクションののルーティング設定==========
 end
