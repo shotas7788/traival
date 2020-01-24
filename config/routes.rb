@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
   
     # ==========postsコントローラ、アクションののルーティング設定==========
-    resources :posts, only: %i(new create) do
+    resources :posts, only: %i(new create index) do
       resources :photos, only: %i(create)
     end
     # ==========postsコントローラ、アクションののルーティング設定==========
