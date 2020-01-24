@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     # ==========postsコントローラ、アクションののルーティング設定==========
     resources :posts, only: %i(new create index show destroy) do
       resources :photos, only: %i(create)
+
+      resources :likes, only: %i(create destroy)
     end
-    # ==========postsコントローラ、アクションののルーティング設定==========
 end
