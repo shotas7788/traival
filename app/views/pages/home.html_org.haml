@@ -1,0 +1,6 @@
+%h1 Pages#home
+%p Find me in app/views/pages/home.html.erb
+- if user_signed_in?
+  = link_to "サインアウト", destroy_user_session_path, method: :delete
+%p このページは仮のトップページです。
+= link_to "仮のボタンです", "#", class: "btn btn-primary"
