@@ -25,4 +25,5 @@ class User < ApplicationRecord
   # ==========パスワードなしでアップデートできる==========
          
   validates :name, presence: true, length: { maximum: 50 }
+  validates :username, presence: true, uniqueness: true
 end
