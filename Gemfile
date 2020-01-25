@@ -56,7 +56,25 @@ gem 'bullet', group: 'development'
 
 gem 'pry', '~> 0.12.2'
 
+gem 'pry-rails'
+
+gem 'pry-byebug'
+
+gem 'pry-stack_explorer'
+
+gem 'pry-doc'
+
 gem 'haml'
+
+gem 'haml-rails'
+
+gem 'erb2haml'
+
+gem 'bootstrap', '~> 4.4.1'
+
+gem 'jquery-rails'
+
+gem 'carrierwave', '~> 1.0'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

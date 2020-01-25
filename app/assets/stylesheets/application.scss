@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+@import "layouts/navbar";
+
+@import "common";
+@import "users/devise";
+
+@import "users/show";
+
+@import "users/edit";
+
+@import "posts";
