@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: b9e1e29df9b489a59743df892f03775142de37e7
+  branch: master
+  specs:
+    faker (2.10.1)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -322,6 +330,7 @@ DEPENDENCIES
   devise
   erb2haml
   factory_bot_rails (~> 5.0)
+  faker!
   haml
   haml-rails
   jbuilder (~> 2.5)
