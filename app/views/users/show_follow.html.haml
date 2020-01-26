@@ -1,10 +1,25 @@
-%div
-  %h1= @user.username
-  %section.stats
-    = render 'partial/stats'
+.col-md-8.col-md-2.mx-auto
+  .card
+    .card-block
+      = link_to user_path(@user), class: "no-text-decoration" do
+        = image_tag avatar_url(@user), class: "post-profile-icon"
+      = link_to user_path(@user), class: "black-color no-text-decoration", |
+        title: @user.username do
+        %strong= @user.username
+        %section.stats
+          = render 'partial/stats'
+
+
+  %h3= @title
+  
   %div
-    %h3= @title
     - if @users.any?
       %ul.users.follow
         - @users.each do |user|
-          %li= link_to user.username, user_path(user)
+          .card
+            .card-block
+              = link_to user_path(user), class: "no-text-decoration" do
+                = image_tag avatar_url(user), class: "post-profile-icon"
+              = link_to user_path(user), class: "black-color no-text-decoration", |
+                title: user.username do
+                %strong= user.username

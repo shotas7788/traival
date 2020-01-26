@@ -1,3 +1,10 @@
+%main{:role => "main"}
+  %section.jumbotron.text-center
+    .container
+      %h1.jumbotron-heading Traivalで旅の思い出を共有
+      %p.lead みんなの投稿にコメント、いいねを送ってみよう！
+      %p
+
 - @posts.each do |post|
   .col-md-8.col-md-2.mx-auto
     .card-wrap
@@ -6,7 +13,7 @@
           = link_to user_path(post.user), class: "no-text-decoration" do
             = image_tag avatar_url(post.user), class: "post-profile-icon"
           = link_to user_path(post.user), class: "black-color no-text-decoration", |
-            title: post.user.username do                                               |
+            title: post.user.username do
             %strong= post.user.username
           - if post.user_id == current_user.id
             = link_to post_path(post), method: :delete, class: "ml-auto mx-0 my-auto" do
