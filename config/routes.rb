@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
   get 'users/:id/following', to: 'users#following', as: 'following'
   get 'users/:id/followers', to: 'users#followers', as: 'followers'
-  
+
+  resources :relationships, only: %i(create destroy)
+
     # ==========postsコントローラ、アクションののルーティング設定==========
     resources :posts, only: %i(new create index show destroy) do
       resources :photos, only: %i(create)
@@ -15,8 +17,6 @@ Rails.application.routes.draw do
       resources :likes, only: %i(create destroy)
       
       resources :comments, only: %i(create destroy)
-      
-      resources :relationships, only: [:create, :destroy]
       
     end
 end
