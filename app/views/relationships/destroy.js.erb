@@ -1,0 +1,2 @@
+$("#follow_form").html("<%= escape_javascript(render('devise/shared/follow')) %>");
+$("#followers").html('<%= @user.followers.count %>');

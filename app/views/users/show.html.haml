@@ -21,3 +21,8 @@
       .row
         %p
           = @user.name
+      .row
+        %section.stats
+          = render 'partial/stats'
+        %section
+          = render 'partial/follow_form' if user_signed_in?

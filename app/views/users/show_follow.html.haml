@@ -1,0 +1,10 @@
+%div
+  %h1= @user.username
+  %section.stats
+    = render 'partial/stats'
+  %div
+    %h3= @title
+    - if @users.any?
+      %ul.users.follow
+        - @users.each do |user|
+          %li= link_to user.username, "#"
