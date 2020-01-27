@@ -105,3 +105,5 @@ gem 'carrierwave', '~> 1.0'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 gem 'font-awesome-rails'
+
+gem 'rails-i18n', '~> 5.1'
