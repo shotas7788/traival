@@ -1,0 +1,28 @@
+.profile-wrap
+  .row
+    .col-md-4.text-center
+      = image_tag @user.profile_photo.to_s, class: "round-img"
+    .col-md-8
+      .row
+        %h1= @user.username
+        - if @user == current_user
+          = link_to "プロフィールを編集", edit_user_registration_path, class: "btn btn-outline-dark edit-profile-btn"
+          %button.setting{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+        #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+          .modal-dialog{:role => "document"}
+            .modal-content
+              .modal-header
+                %h5#exampleModalLabel.modal-title 設定
+                %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                  %span{"aria-hidden" => "true"} ×
+              .list-group.text-center
+                = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action"
+                = link_to "キャンセル", "#", class: "list-group-item list-group-item-action", "data-dismiss": "modal"
+      .row
+        %p
+          = @user.name
+      .row
+        %section.stats
+          = render 'partial/stats'
+        %section
+          = render 'partial/follow_form' if user_signed_in?

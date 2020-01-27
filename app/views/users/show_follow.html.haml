@@ -1,0 +1,25 @@
+.col-md-8.col-md-2.mx-auto
+  .card
+    .card-block
+      = link_to user_path(@user), class: "no-text-decoration" do
+        = image_tag avatar_url(@user), class: "post-profile-icon"
+      = link_to user_path(@user), class: "black-color no-text-decoration", |
+        title: @user.username do
+        %strong= @user.username
+        %section.stats
+          = render 'partial/stats'
+
+
+  %h3= @title
+  
+  %div
+    - if @users.any?
+      %ul.users.follow
+        - @users.each do |user|
+          .card
+            .card-block
+              = link_to user_path(user), class: "no-text-decoration" do
+                = image_tag avatar_url(user), class: "post-profile-icon"
+              = link_to user_path(user), class: "black-color no-text-decoration", |
+                title: user.username do
+                %strong= user.username
