@@ -7,7 +7,7 @@
         = form_with model: @post, class: "upload-images p-0 border-0" do |f|
           .form-group.row.mt-2
             .col-auto.pr-0
-              = image_tag avatar_url(current_user), class: "post-profile-icon"
+              = image_tag current_user.profile_photo.to_s, class: "post-profile-icon"
             .col.pl-0
               = f.text_field :caption, class: "form-control border-0", placeholder: "キャプションを書く"
           .mb-3

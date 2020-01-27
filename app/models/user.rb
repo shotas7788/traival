@@ -48,4 +48,6 @@ class User < ApplicationRecord
          
   validates :name, presence: true, length: { maximum: 50 }
   validates :username, presence: true, uniqueness: true
+  
+  mount_uploader :profile_photo, ProfilePhotoUploader
 end

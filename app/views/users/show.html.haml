@@ -1,7 +1,7 @@
 .profile-wrap
   .row
     .col-md-4.text-center
-      = image_tag avatar_url(@user), class: "round-img"
+      = image_tag @user.profile_photo.to_s, class: "round-img"
     .col-md-8
       .row
         %h1= @user.username

@@ -11,7 +11,7 @@
       .card
         .card-header.align-items-center.d-flex
           = link_to user_path(post.user), class: "no-text-decoration" do
-            = image_tag avatar_url(post.user), class: "post-profile-icon"
+            = image_tag post.user.profile_photo.to_s, class: "post-profile-icon"
           = link_to user_path(post.user), class: "black-color no-text-decoration", |
             title: post.user.username do
             %strong= post.user.username
