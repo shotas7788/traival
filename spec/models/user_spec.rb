@@ -17,6 +17,27 @@ RSpec.describe User, type: :model do
         expect(registared_user.username).to eq('たなたろ')
       end
     end
+    
+    context 'ユーザーをフォローする' do
+      it '正しくフォローできること'  do
+        user1 = FactoryBot.build(:user_tanaka)
+        user2 = FactoryBot.build(:user_suzuki)
+        user3 = FactoryBot.build(:user_satou)
+
+        user1.save
+        user2.save
+        user3.save
+
+        user1.follow(user2)
+        user1.follow(user3)
+        user1.unfollow(user3)
+        user2.follow(user1)
+        
+        expect(user1.following?(user2)).to be_truthy
+        expect(user2.following?(user1)).to be_truthy
+        expect(user1.following?(user3)).to be_falsy
+      end
+    end
   end
   
   describe '異常系の機能' do
