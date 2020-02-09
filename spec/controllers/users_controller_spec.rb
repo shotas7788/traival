@@ -1,30 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :controller do
-
-  let(:user) { FactoryBot.create(:user) }
-  let(:task) { FactoryBot.create(:post, user: user) }
-
-  describe 'GET #index' do
-    it 'returns http success' do
-      get :index
-      expect(response).to have_http_status(:success)
-      expect(response).to render_template('index')
-      expect(assigns(:tasks)).to eq []
-    end
-  end
+describe UsersController, type: :controller do
   
-  describe 'POST #new' do
-    it 'returns http success' do
-      post :create, params: { post: { caption: '123', profile_photo {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/default.jpg'))} } }
-      expect(response).to have_http_status(302)
-      expect(Post.all.count).to eq 1
-      expect(Post.all.take.title).to eq '123'
-      expect(Post.all.take.profile_photo).to eq "default.jpg"
-      expect(Post.all.take.user).to eq user
-      expect(Post.all.take.completed_at).to eq nil
-      expect(Post.all.take.completed).to eq false
-    end
+  let(:user) { create(:user) }
+
+  before do
+    login_user user
   end
-  
+
+  it "should have a current_user" do
+    # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller
+    expect(subject.current_user).to_not eq(nil)
+  end
+
+  it "should get show" do
+    # Note, rails 3.x scaffolding may add lines like get :index, {}, valid_session
+    # the valid_session overrides the devise login. Remove the valid_session from your specs
+    get :show, params: { user_id: user }
+    response.should be_success
+  end
 end

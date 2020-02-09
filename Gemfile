@@ -107,3 +107,5 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'font-awesome-rails'
 
 gem 'rails-i18n', '~> 5.1'
+
+gem 'rails-controller-testing'
