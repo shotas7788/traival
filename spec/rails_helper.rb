@@ -34,15 +34,14 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-require_relative 'support/controller_macros' # or require_relative './controller_macros' if write in `spec/support/devise.rb`
-
 RSpec.configure do |config|
   
   # For Devise > 4.1.1
-  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Devise::TestHelpers, :type => :controller
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } #support directoryをrequire
+  config.include RequestSpecHelper, type: :request #type: :requestのときにRequestHelperをinclude
   # Use the following instead if you are on Devise <= 4.1.1
   # config.include Devise::TestHelpers, :type => :controller
-  config.extend ControllerMacros, :type => :controller
   
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -74,10 +73,10 @@ RSpec.configure do |config|
 end
 
 
-RSpec.configure do |config|
-  [:controller, :view, :request].each do |type|
-    config.include ::Rails::Controller::Testing::TestProcess, :type => type
-    config.include ::Rails::Controller::Testing::TemplateAssertions, :type => type
-    config.include ::Rails::Controller::Testing::Integration, :type => type
-  end
-end
+# RSpec.configure do |config|
+#   [:controller, :view, :request].each do |type|
+#     config.include ::Rails::Controller::Testing::TestProcess, :type => type
+#     config.include ::Rails::Controller::Testing::TemplateAssertions, :type => type
+#     config.include ::Rails::Controller::Testing::Integration, :type => type
+#   end
+# end
