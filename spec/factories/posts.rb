@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :post, class: Post do
+    user_tanaka
     caption { 'キャプション' }
-    user_id { user_tanaka.id }
+    trait :invalid do
+      caption {''}
+    end
   end
 end

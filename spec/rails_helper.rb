@@ -40,6 +40,9 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } #support directoryをrequire
   config.include RequestSpecHelper, type: :request #type: :requestのときにRequestHelperをinclude
+
+  config.include FactoryBot::Syntax::Methods
+
   # Use the following instead if you are on Devise <= 4.1.1
   # config.include Devise::TestHelpers, :type => :controller
   
@@ -70,6 +73,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  
+  config.before(:all) do
+    FactoryBot.reload
+  end
+  
 end
 
 

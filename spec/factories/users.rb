@@ -1,12 +1,25 @@
 FactoryBot.define do
-  factory :user do
+  factory :user, class: 'user' do
     profile_photo {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/default.jpg'))}
-    name { 'テスト太郎' }
-    username{ 'ゆーざーねーむ'}
-    email { 'test.taro@example.com' }
-    password { 'password'}
-    password_confirmation { 'password'}
+    name {''}
+    username {''}
+    email {''}
+    password {''}
+    password_confirmation {''}
   end
+  
+  # factory :photo, class: Photo do
+  #   image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/unsplash2.jpg')) }
+  #   association :post, factory: :post
+  # end
+  
+  # factory :post, class: Post do
+  #   caption { 'キャプション' }
+  #   association :user, factory: :user_tanaka
+  #   trait :invalid do
+  #     caption {''}
+  #   end
+  # end
   
   factory :user_tanaka, class: 'user' do 
     # profile_photo { 'default.jpg' }
@@ -16,6 +29,9 @@ FactoryBot.define do
     email { 'taro.tanaka@example.com' }
     password { 'password'}
     password_confirmation { 'password'}
+    # after(:build) do |user|
+    #   create_list(:post, 1, user: user, caption: "キャプション")
+    # end
   end
   
   factory :user_suzuki, class: 'user' do 
