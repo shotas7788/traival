@@ -4,13 +4,15 @@ RUN apt-get update -qq && \
                        build-essential \
                        libpq-dev \
                        nodejs \
-                       default-mysql-client
+                       default-mysql-client \
+                    && apt-get clean \
+                    && rm -rf /var/lib/apt/lists/*
+ENV LANG ja_JP.UTF-8
 RUN mkdir /app
 WORKDIR /app
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
+COPY Gemfile Gemfile.lock ./
 RUN gem install bundler
-# RUN bundle install
-ADD . /app
-
+RUN bundle install
+COPY . .
 EXPOSE 8080
+CMD ["bundle", "exec", "unicorn", "-p", "8080", "-c", "/app/config/unicorn.rb"]       
