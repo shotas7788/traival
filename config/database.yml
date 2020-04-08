@@ -15,7 +15,8 @@ default: &default
   pool: 5
   username: root
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
-  host: db
+  # host: db
+  host: traival.c2ymepqmeolv.ap-northeast-1.rds.amazonaws.com
 
 development:
   <<: *default
